@@ -1,0 +1,84 @@
+import java.lang.*;
+
+/* Nouveau type de donnée "MyPolygon", qui permettra de représenter
+un polygone en 2 dimensions, en s’appuyant sur le type MyPoint */
+
+class MyPolygon {
+	
+	private MyPoint[] contour; // Tableau représentant la liste des points du contour définissant le polygone
+	
+	public MyPolygon(MyPoint[] contour){ // Constructeur de la classe
+        this.contour = contour;
+    }
+	
+	// Accesseurs de la variable contour
+	 public void setContour(MyPoint[] unContour){
+		contour = unContour;
+	}
+	public MyPoint[] getContour(){
+		return contour;
+	}
+	
+	// Méthode retournant le nombre de points dans la liste initialisée
+	public int getNombrePoints(){
+		return contour.length;
+	}
+	
+	// Méthode retournant l'aire du polygone 
+    public double aire(){
+        double somme = 0.0; // Initialisation de la variable "somme"
+        for (int i = 0; i < contour.length-1; i++) { // Calcul de l'aire
+            somme = somme + (contour[i].getX() * contour[i+1].getY()) - (contour[i].getY() * contour[i+1].getX());
+        }
+        return somme/2;
+    }
+	
+	// Méthode retournant la position du centroide du polygone
+    public MyPoint centroide(){
+        double xCentroide = 0.0; // Initialisation de la coordonnée en x
+		double yCentroide = 0.0; // Initialisation de la coordonnée en y
+        for (int i = 0; i < contour.length-1; i++) { // Calcul du centroide
+            xCentroide = xCentroide + (contour[i].getX() + contour[i+1].getX())*(contour[i].getX() * contour[i+1].getY() - contour[i+1].getX() * contour[i].getY());
+			yCentroide = yCentroide + (contour[i].getY() + contour[i+1].getY())*(contour[i].getX() * contour[i+1].getY() - contour[i+1].getX() * contour[i].getY());
+        }
+        xCentroide = xCentroide/(6 * aire());// Suite calcul du centroide (x)
+		yCentroide = yCentroide/(6 * aire());// Suite calcul du centroide (y)
+		MyPoint leCentroide = new MyPoint(xCentroide, yCentroide); // Création d'un nouvel objet "MyPoint" avec les coordonnées du centroide
+		
+		return leCentroide;
+    }
+	
+    // Méthode qui permet d'afficher les coordonnées d'un point sous la forme d'une chaine de caractère 
+    public String toString() {
+        String formatePoly = "Polygone de travail : ";
+        formatePoly = formatePoly + "{ ";
+        for (int i = 0; i < contour.length; i++)
+            formatePoly = formatePoly + contour[i] + " ";
+        formatePoly = formatePoly + "}";
+		
+        return formatePoly;
+    }
+	
+	public static void main(String[] args){ // Programme principal
+	// Création de points
+	MyPoint pouinNo1 = new MyPoint(0.0, 0.0);
+	MyPoint pouinNo2 = new MyPoint(0.0, 20.0);
+	MyPoint pouinNo3 = new MyPoint(20.0, 20.0);
+	MyPoint pouinNo4 = new MyPoint(20.0, 0.0);
+	
+	MyPoint[] LEcontour = {pouinNo1, pouinNo2, pouinNo3, pouinNo4}; // Définition d'un nouvel objet "MyPoint" contenant une liste de points
+	MyPolygon polyne = new MyPolygon(LEcontour); // définition d'un nouvel objet "MyPolygon" à partir d'une liste de points en entrée
+	// Affichage du résultat
+	System.out.println(polyne);
+	System.out.println("Aire = " + polyne.aire());
+    System.out.println("Centroide : " + polyne.centroide());
+	// Test des autres méthodes
+	System.out.println("Test sur les autres methodes");
+	MyPoint[] testContour = {pouinNo4, pouinNo3, pouinNo2, pouinNo1};
+	polyne.setContour(testContour); // Test de la méthode setContour()
+	System.out.println(polyne);
+	System.out.println("Aire = " + polyne.aire());
+    System.out.println("Centroide : " + polyne.centroide());
+	System.out.println("Nombre de points : " + polyne.getNombrePoints()); // 
+    }
+}
