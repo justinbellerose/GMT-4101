@@ -1,0 +1,31 @@
+import java.lang.*;
+
+/* programme Java qui donne les racines d'une équation du second degrée.
+Les paramètres a, b et c seront fournis en arguments du programme. */
+
+class  PolyDegre2 {
+	public static void main(String[] args){
+		double a = Double.parseDouble(args[0]); // variable "a" dans l'équation : a x² + b x + c = 0
+		double b = Double.parseDouble(args[1]); // variable "b" dans l'équation : a x² + b x + c = 0
+		double c = Double.parseDouble(args[2]); // variable "c" dans l'équation : a x² + b x + c = 0
+		double delta = (Math.pow(b,2)) - (4*a*c); // Calcul du delta
+		double x1, x2; // Variables représentants les racines
+		
+		if (delta == 0){ // Cas où delta = 0
+			x1 = -b / (2*a);
+			System.out.print("La racine est: " + x1);
+			System.out.println();
+		}		
+		if (delta > 0){ // Cas où delta > 0
+			x1 = (-b + Math.sqrt(delta))/(2*a);
+			x2 = (-b - Math.sqrt(delta))/(2*a);
+			System.out.print("Les racines sont: " + x1 + " et " + x2);
+			System.out.println();
+		}
+		if (delta < 0){ // Cas où delta < 0
+			x1 = (Math.sqrt(-delta));
+			System.out.print("Les racines sont: (" + -b + " + " + x1 + "*i) / " + 2*a + " et (" + -b + " - " + x1 + "*i) / " + 2*a);
+			System.out.println();
+		}
+	}	
+}
