@@ -1,0 +1,50 @@
+import java.lang.*;
+
+/* Nouveau type de donnée "MyPoint", qui permettra de représenter
+un point en 2 dimensions. */
+
+class MyPoint {
+	
+	private double xDbl; // Coordonnée en x du point 
+	private double yDbl; // Coordonnée en y du point 
+	
+	public MyPoint(double xDbl, double yDbl) { // Constructeur de la classe 
+        this.xDbl = xDbl;
+        this.yDbl = yDbl;
+    }
+	
+	// Accesseurs de la variable xDbl
+	 public void setX(double xSet){
+		xDbl = xSet;
+	}
+	public double getX(){
+		return xDbl;
+	}
+	
+	// Accesseurs de la variable yDbl
+	public void setY(double ySet){
+		yDbl = ySet;
+	}
+	public double getY(){
+		return yDbl;
+	}
+	
+	// Méthode qui permet d'afficher les coordonnées d'un point sous la forme d'une chaine de caractère
+	public String toString(){
+		return "(" + getX() + "," + getY() + ")";
+	}
+	
+	public static void main(String[] args){ // Programme principal	
+
+	MyPoint pouin = new MyPoint(10.0, 20.0); // Définition d'un objet Point
+	System.out.println(pouin); // Affichage des coordonnées du point
+	
+	// Test des accesseurs
+	System.out.println("Test des accesseurs");
+	pouin.setX(15.0); // Test de la méthode setX()
+	System.out.println(pouin.getX() + " setX/getX"); // Test de la méthode getX()
+	pouin.setY(25.0); // Test de la méthode setY()
+	System.out.println(pouin.getY() + " setY/getY"); // Test de la méthode getY()	
+	System.out.println(pouin);
+    }
+}
