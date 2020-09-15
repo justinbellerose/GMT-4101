@@ -1,0 +1,17 @@
+import java.lang.*;
+
+/* le programme permet de substituer une sous chaîne par une autre dans une chaîne de
+caractères saisie par l'utilisateur sur la ligne de commande. */
+
+class ChangeSousChaine {
+    public static void main(String[]args) {
+	
+	String laChaine = args[0]; // Chaine entrée par l'utilisateur
+	String mot1 = args[1]; // Mot à remplacer dans la chaine - saisie pas l'utilisateur
+	String mot2 = args[2]; // Mot à inscrire dans la chaine - saisie par l'utilisateur
+
+	// Résultat
+	System.out.print("Le remplacement de " + '"' + mot1 + '"' + " par " + '"' + mot2 + '"' + " dans la phrase " + '"' + laChaine + '"' + " donne:\n\n" );
+	System.out.println(laChaine.replace(mot1, mot2));		
+    }
+}
