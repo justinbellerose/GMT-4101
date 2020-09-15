@@ -1,0 +1,26 @@
+import java.lang.*;
+
+/* programme Java qui calcule de façon récursive xn puis affiche le résultat. */
+
+class  Puissance {
+	public static int exp(int X, int n) { // Déclaration de la base et de la puissance à calculer
+		if (n == 0){ // Si la puissance = 0
+			return 1;
+		}		
+		if (n == 1){ // Si la puissance = 1
+			return X;
+		}
+		if (n % 2 == 0){ // Si la puissance = 2
+			return (exp(X, n/2) * exp(X, n/2));
+		}
+		else{ // Si la puissance > 2
+			return (X * exp(X, n-1));
+		}
+	}
+	public static void main(String[] args){
+		int base = Integer.parseInt(args[0]); // Base entrée par l'utilisateur
+		int exposant = Integer.parseInt(args[1]); // Puissance entrée par l'utilisateur
+		// Afficahge du résultat
+		System.out.println(exp(base, exposant));
+	}
+}
