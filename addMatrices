@@ -1,0 +1,35 @@
+import java.lang.*;
+import java.text.DecimalFormat;
+
+/* programme qui réalisera l'addition de deux matrices 2x2. */
+
+class addMatrices {
+    public static void main(String[] args) {
+		
+		double[][] matriceUn = new double[][] {{0, 1}, {2, 3}}; // Création d'un tableau 2D "Matrice #1"
+		double[][] matriceDeux = new double[][] {{3, 2}, {1, 0}}; // Création d'un tableau 2D "Matrice #2"
+		 
+		double[][] resultat = new double[2][2]; // Matrice résultante de l'addition des deux matrices
+		
+		// Affichage du résultat
+		DecimalFormat formatter = new DecimalFormat("0.#");
+		System.out.println("La matrice resultat est : ");
+		System.out.println();
+		 
+		// Addition des deux matrices 2x2
+		for(int i = 0 ; i < 2 ; i++){
+			System.out.print("["); 
+			for(int j = 0 ; j < 2 ; j++){    
+				resultat[i][j] = matriceUn[i][j] + matriceDeux[i][j];
+				if (j == 0){
+					System.out.print(formatter.format(resultat[i][j]) + " ");
+				}
+				else{
+					System.out.print(formatter.format(resultat[i][j]));
+				}
+			}
+			System.out.print("]");			
+		System.out.println(); 
+		}     
+    }
+}
