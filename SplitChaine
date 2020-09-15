@@ -1,0 +1,17 @@
+import java.lang.*;
+/* programme qui scinde une chaîne de caractères
+contenant un espace en deux sous chaînes ne contenant pas d'espace. */
+
+class SplitChaine {
+    public static void main(String[] args) {	
+		
+		String laChaine = args[0]; // Chaine entrée par l'utilisateur
+		
+		String[] splitChaine = laChaine.split(" ");
+		
+		// Résultat
+        System.out.println("Debut : " + '"' + splitChaine[0] + '"');
+		System.out.println("Fin : " + '"' + splitChaine[1] + '"');
+
+    }
+}
