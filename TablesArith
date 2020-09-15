@@ -1,0 +1,51 @@
+import java.lang.*;
+
+/* programme Java qui affiche des tables d'addition, soustraction,
+multiplication ou division. */
+
+class  TablesArith {
+	 public static void main(String[] args) {
+		 String type = args[0]; // Paramètre qui donne le type de table à afficher (x,/,+,-)
+		 int colonnes = Integer.parseInt(args[2]); // Nombre de colonne que l'on souhaite afficher
+		 int lignes = Integer.parseInt(args[1]); // Nombre de ligne que l'on souhaite afficher
+		 int[][] tab = new int [lignes+1][colonnes+1]; // Définition d'un tableau d'entiers qui contiendra les résultats
+		 double[][] tab2 = new double [lignes+1][colonnes+1]; // Définition d'un tableau de doubles qui contiendra les résultats (de la division)
+		 
+		 // Affichage de la première ligne du tableau
+		 System.out.format("%4s",type + " !");
+		 for(int j=1 ; j<=colonnes ; j++){
+			System.out.format("%6s",j);
+		 }
+		 System.out.print("\n");
+		 
+		 // Affichage des pointillés
+		 for(int j=1 ; j<=(6*colonnes+4) ; j++){
+			System.out.print("-");
+		 }
+		 System.out.print("\n");
+		 
+		 // Calculs et afffichage des tables
+		 for(int i=1 ; i<=lignes ; i++){
+			System.out.format("%4s",i + " !");
+			for(int j=1 ; j<=colonnes ; j++){
+				if (type.equals("x")){ // Multiplication
+					tab[i][j] = i*j;
+					System.out.format("%6s",tab[i][j]);
+				}	
+				else if (type.equals("-")){ // Soustraction
+					tab[i][j] = i-j;
+					System.out.format("%6s",tab[i][j]);
+				}	
+				else if (type.equals("+")){ // Addition
+					tab[i][j] = i+j;
+					System.out.format("%6s",tab[i][j]);
+				}	
+				else if (type.equals("/")){ // Division
+					tab2[i][j] = i*1.0/j;
+					System.out.format("%6.2f",tab2[i][j]);
+				}
+			}
+			System.out.print("\n");
+		}
+	}
+}
